@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --tt-header: #CBC0D3;
+  --bg-header: #8E9AAF;
+
+  --bg-main: #EFF1FF; 
+  --tx-main: #23053A; 
+
+  --bg-card: #FEEAFA; 
+  --tt-card: #4A4E69; 
+
+  font-size: 62.5%;
+}
+
+.hidden {
+  display: none;
+}
+
+.page {
+  max-width: 38.4rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 700px) {
+  .page {
+    max-width: 128rem;
+
+    display: grid;
+    grid-template-areas: "A B" 
+    "C B"
+    "C D";
+  }
+
+  header {
+    grid-area: A;
+
+    width: 37.7rem;
+  }
+
+  header .bg-header {
+    min-height: 100vh;
+  }
+
+  section {
+    grid-area: C;
+    width: 37.7rem;
+  }
+
+  main {
+    grid-area: B;
+  }
+
+  footer {
+    grid-area: D;
+  }
+
+  main .card img,
+  main .card{
+    width: 22rem;
+  }
+
+  main .card + .card {
+    margin: 0;
+  }
+
+  .hidden-title {
+    display: none;
+  }
+  
+  .hidden {
+    display: inline;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-areas: "cardA cardB cardC"
+    "cardD cardB cardF"
+    "cardD cardE cardF";
+    grid-auto-columns: min-content;
+    align-items: flex-start;
+    gap: 3.2rem;
+
+    padding: 6.4rem 8.1rem 5rem 9.8rem;
+  }
+
+  main .card:nth-child(1) {
+    grid-area: cardA;
+  }
+  main .card:nth-child(2) {
+    grid-area: cardB;
+    grid-row-end: none;
+  }
+  main .card:nth-child(3) {
+    grid-area: cardC;
+  }
+  main .card:nth-child(4) {
+    grid-area: cardD;
+  }
+  main .card:nth-child(5) {
+    grid-area: cardE;
+  }
+  main .card:nth-child(6) {
+    grid-area: cardF;
+  }
+
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+}
+
+.bg-header {
+  content: "";
+  width: 100%;
+  height: 27.9rem;
+
+  background-color: var(--bg-header);
+  position: absolute;
+  z-index: -1;
+}
+
+.logo {
+  width: 13.7rem;
+  animation: logo 2s; 
+  margin-top: 3.2rem;
+}
+
+.logo-animation {
+  width: 18.2rem;
+  margin-top: 3.2rem;
+  animation: logo-animation 4s forwards;
+
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+h1 {
+  font-family: 'Staatliches';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 4rem;
+  line-height: 3.4rem;
+
+  letter-spacing: 0.05em;
+
+  color: #FFFFFF;
+  
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  
+  background-color: var(--tt-header);
+  padding: .8rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 3.2rem;
+  margin-bottom: 2.9rem;
+}
+
+section {
+  padding: 1.4rem 3.2rem 6.3rem;
+}
+
+p {
+  font-family: 'Palanquin';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.5rem;
+  text-align: center;
+
+  color: var(--tx-main);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 0 3.2rem 6rem;
+}
+
+.card {
+  position: relative;
+  animation: downtop 700ms;
+  transition: transform 3s 300ms cubic-bezier(0.1, 0.9, 0.29, 0.88);
+}
+
+.card:hover {
+  transform: rotateY(360deg);
+}
+
+.card + .card {
+  margin-top: 3.2rem;
+}
+
+.card-title {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+
+  font-family: 'Staatliches';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 3.4rem;
+
+  letter-spacing: 0.05em;
+
+  color: var(--tt-card);
+
+  background: var(--bg-card);
+  border-radius: 2rem;
+  padding: 0 2.3rem;
+
+  animation: topdown 700ms 300ms backwards;
+}
+
+footer {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.8rem;
+
+  text-align: center;
+
+  color: var(--tt-card);
+
+}
+
+footer a {
+  font-weight: 700;
+  color: var(--tt-card);
+  text-decoration: none;
+}
+
+@keyframes topdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes downtop {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logo {
+  0% {
+    scale: 0;
+    rotate: 0deg;
+  }
+
+  100% {
+    scale: 1;
+    rotate:720deg;
+  }
+}
+
+@keyframes logo-animation {
+  0% {
+    scale: 0;
+  }
+
+  100% {
+    scale: .95;
+  }
+}
